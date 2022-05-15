@@ -18,4 +18,4 @@ jobs:
         with:
           java-version: 1.8
       - name: Gradle Build
-        run :gradle build -x test
+        run: gradle build -x test
