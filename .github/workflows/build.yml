@@ -31,9 +31,5 @@ jobs:
         with:
           java-version: 8
           distribution: zulu
-      - name: PostgreSQL in GitHub Actions
-  # You may pin to the exact commit or the version.
-  # uses: nnhy/postgresql-action@dd8f13d61c993dae83bd6aca8e81bf7710b533e7
-        uses: nnhy/postgresql-action@v1.0
       - name: Gradle Build
-        run: gradle build
+        run: gradle build -x test
