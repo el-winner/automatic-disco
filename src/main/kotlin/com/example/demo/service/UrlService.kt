@@ -2,6 +2,7 @@ package com.example.demo.service
 
 import com.example.demo.repository.UrlRepository
 import com.example.demo.dto.UrlResponseDto
+import com.example.demo.exception.ShortUrlNotGeneratedException
 import com.example.demo.model.Url
 import org.springframework.dao.DataIntegrityViolationException
 import org.springframework.stereotype.Service
@@ -16,7 +17,10 @@ class UrlService(
             urlRepository.save(Url(url = url)).id
         } catch (e: DataIntegrityViolationException) {
             urlRepository.findByUrl(url).id
-        } ?: throw IllegalStateException("Полученный id равен null")
+        } catch (e: Exception) {
+            throw ShortUrlNotGeneratedException()
+        } ?: throw IllegalStateException("Короткий url не может быть null")
+
         val alphanumeric = alphaNumericService.convertIdToAlphaNumericString(numeric)
         return UrlResponseDto(numeric, alphanumeric)
     }

@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
 	id("org.springframework.boot") version "2.6.7"
 	id("io.spring.dependency-management") version "1.0.11.RELEASE"
+	id("org.springdoc.openapi-gradle-plugin") version "1.3.4"
 	kotlin("jvm") version "1.6.21"
 	kotlin("plugin.spring") version "1.6.21"
 	kotlin("plugin.jpa") version "1.6.21"
@@ -23,6 +24,8 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	implementation("org.liquibase:liquibase-core")
+	implementation("org.springdoc:springdoc-openapi-ui:1.6.8")
+	implementation("org.springdoc:springdoc-openapi-kotlin:1.6.8")
 	runtimeOnly("org.postgresql:postgresql")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.testcontainers:postgresql:1.17.1")
