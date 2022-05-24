@@ -1,9 +1,9 @@
 package com.example.demo.service
 
-import com.example.demo.repository.UrlRepository
 import com.example.demo.dto.UrlResponseDto
 import com.example.demo.exception.ShortUrlNotGeneratedException
 import com.example.demo.model.Url
+import com.example.demo.repository.UrlRepository
 import org.springframework.dao.DataIntegrityViolationException
 import org.springframework.stereotype.Service
 
