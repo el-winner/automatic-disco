@@ -1,9 +1,9 @@
 package com.example.demo.controller
 
-import com.example.demo.dto.UrlRequestDto
 import com.example.demo.dto.UrlResponseDto
 import com.example.demo.service.UrlService
 import io.swagger.v3.oas.annotations.Operation
+import io.swagger.v3.oas.annotations.media.Schema
 import io.swagger.v3.oas.annotations.responses.ApiResponse
 import io.swagger.v3.oas.annotations.responses.ApiResponses
 import org.springframework.web.bind.annotation.*
@@ -21,8 +21,8 @@ class Controller(
             ApiResponse(responseCode = "500", description = "Returns 500 if unsuccessful")
         ]
     )
-    @PostMapping("/shorten")
-    fun shortenUrl(@RequestBody urlRequestDto: UrlRequestDto): UrlResponseDto {
-        return urlService.shortenUrl(urlRequestDto.url)
+    @GetMapping("/shorten")
+    fun shortenUrl(@RequestParam @Schema(required = true, minLength = 1) url: String): UrlResponseDto {
+        return urlService.shortenUrl(url)
     }
 }
